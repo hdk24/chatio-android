@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">ChatIo</string>
+
+    <string name="action_started">Get Started</string>
+    <string name="action_connecting">Connecting…</string>
+
+    <string name="message_welcome">Welcome to ChatIo</string>
+    <string name="message_desc_welcome">ChatIo is a simple chat demo for Android using Socket.io. This app connects to Socket.io demo on browser.</string>
+    <string name="message_connection_failed">Waiting for network …</string>
+    <string name="action_login">Let\'s Started</string>
+    <string name="label_login_as">Login as %s</string>
+    <string name="action_delete">Delete</string>
+
+    <string name="label_now">Now</string>
+    <string name="label_minutes">m</string>
+    <string name="label_hour">h</string>
+    <string name="label_day">d</string>
+    <string name="label_month">mo</string>
+    <string name="label_year">y</string>
+    <string name="label_today">Today, %s</string>
+    <string name="label_yesterday">Yesterday, %s</string>
+</resources>
