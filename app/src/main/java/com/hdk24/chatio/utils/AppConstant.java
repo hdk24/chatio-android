@@ -22,6 +22,7 @@ public final class AppConstant {
     //public static final String CHAT_SERVER_URL = "http://10.0.2.2:3000/";
 
     //topic socket
+    public static final String TOPIC_ADD_USER = "add user";
     public static final String TOPIC_JOINED = "user joined";
     public static final String TOPIC_MESSAGE = "new message";
     public static final String TOPIC_LEFT = "user left";

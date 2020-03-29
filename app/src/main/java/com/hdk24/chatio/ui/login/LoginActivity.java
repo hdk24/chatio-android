@@ -30,7 +30,6 @@ public class LoginActivity extends BaseActivity {
 
     private ActivityLoginBinding binding;
     private EventBus bus = EventBus.getDefault();
-    private boolean isNext;
 
     /**
      * init layout with view binding
@@ -51,6 +50,7 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onViewReady(Bundle savedInstanceState) {
         bus.register(this);
+        startSocketService();
         initViews();
     }
 
@@ -91,7 +91,6 @@ public class LoginActivity extends BaseActivity {
             prefHelper.saveToBoolean(PREF_LOGGED_IN, true);
             prefHelper.saveToString(PREF_SESSION_NAME, formValue);
             NavigationUtils.goToHome(this);
-            isNext = true;
             finish();
         });
     }
@@ -121,6 +120,12 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        SocketService.getInstance().stopSelf();
+    }
+
     /**
      * stop service when user close app from splash screen
      */
@@ -128,6 +133,5 @@ public class LoginActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         bus.unregister(this);
-        if (!isNext) SocketService.getInstance().stopSelf();
     }
 }

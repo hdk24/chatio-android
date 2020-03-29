@@ -30,10 +30,11 @@ import io.socket.client.Socket;
 import io.socket.engineio.client.transports.WebSocket;
 
 import static com.hdk24.chatio.utils.AppConstant.PREF_LOGGED_IN;
+import static com.hdk24.chatio.utils.AppConstant.PREF_SESSION_NAME;
 import static com.hdk24.chatio.utils.AppConstant.STATUS_CONNECTED;
 import static com.hdk24.chatio.utils.AppConstant.STATUS_CONNECTING;
 import static com.hdk24.chatio.utils.AppConstant.STATUS_DISCONNECTED;
-import static com.hdk24.chatio.utils.AppConstant.STATUS_RECONNECT;
+import static com.hdk24.chatio.utils.AppConstant.TOPIC_ADD_USER;
 import static com.hdk24.chatio.utils.AppConstant.TOPIC_JOINED;
 import static com.hdk24.chatio.utils.AppConstant.TOPIC_LEFT;
 import static com.hdk24.chatio.utils.AppConstant.TOPIC_MESSAGE;
@@ -156,6 +157,7 @@ public class SocketService extends Service {
             AppLogger.d("SOCKET:: Connection - CONNECTED ");
             connected = true;
             EventBus.getDefault().post(new StatusEvent(STATUS_CONNECTED));
+            registerUsername();
         });
 
         // subscribe when socket on connecting
@@ -201,8 +203,8 @@ public class SocketService extends Service {
         boolean isLoggedIn = prefHelper.readBoolean(PREF_LOGGED_IN, false);
         if (!isLoggedIn) return;
         for (String event : messageEvent) {
-            AppLogger.d("SOCKET:: event - " + event);
             if (!listSubscription.contains(event)) {
+                AppLogger.d("SOCKET:: event - " + event);
                 listSubscription.add(event);
                 subscribeEvent(event);
             }
@@ -233,6 +235,16 @@ public class SocketService extends Service {
                     if (connected) subscribeEvent(event);
                 });
         compositeDisposable.add(subscription);
+    }
+
+    /**
+     * add user to socket
+     * disconnect mean left group, rejoin when reconnect
+     */
+    public void registerUsername() {
+        boolean isLoggedIn = prefHelper.readBoolean(PREF_LOGGED_IN, false);
+        String username = prefHelper.readString(PREF_SESSION_NAME, null);
+        if (username != null && isLoggedIn) mSocket.emit(TOPIC_ADD_USER, username);
     }
 
     /**

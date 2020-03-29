@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewbinding.ViewBinding;
 
 import com.hdk24.chatio.R;
+import com.hdk24.chatio.data.event.MessageEvent;
 import com.hdk24.chatio.data.event.StatusEvent;
 import com.hdk24.chatio.databinding.ActivityHomeBinding;
 import com.hdk24.chatio.service.SocketService;
@@ -51,6 +52,7 @@ public class HomeActivity extends BaseActivity {
     protected void onViewReady(Bundle savedInstanceState) {
         bus.register(this);
         username = prefHelper.readString(PREF_SESSION_NAME, null);
+        SocketService.getInstance().registerUsername();
         startMessageService();
         initViews();
     }
@@ -89,6 +91,19 @@ public class HomeActivity extends BaseActivity {
         }
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(MessageEvent event) {
+        switch (event.topic) {
+
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        SocketService.getInstance().stopSelf();
+    }
+
     /**
      * stop service when user close app from splash screen
      */
@@ -96,6 +111,5 @@ public class HomeActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         bus.unregister(this);
-        SocketService.getInstance().stopSelf();
     }
 }

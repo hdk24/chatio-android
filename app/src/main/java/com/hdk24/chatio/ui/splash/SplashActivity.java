@@ -30,7 +30,6 @@ public class SplashActivity extends BaseActivity {
 
     private EventBus bus = EventBus.getDefault();
     private ActivitySplashBinding binding;
-    private boolean isNext;
     private boolean isLoggedIn;
     private String mUsername;
 
@@ -53,7 +52,6 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onViewReady(Bundle savedInstanceState) {
         bus.register(this);
-
         startSocketService();
         binding.containerSplash.post(this::initViews);
     }
@@ -75,7 +73,6 @@ public class SplashActivity extends BaseActivity {
         }
 
         binding.btnStarted.setOnClickListener(v -> {
-            isNext = true;
             if (isLoggedIn) NavigationUtils.goToHome(this);
             else NavigationUtils.goToLoggedIn(this);
             finish();
@@ -108,6 +105,12 @@ public class SplashActivity extends BaseActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        SocketService.getInstance().stopSelf();
+    }
+
     /**
      * stop service when user close app from splash screen
      */
@@ -115,6 +118,5 @@ public class SplashActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         bus.unregister(this);
-        if (!isNext) SocketService.getInstance().stopSelf();
     }
 }

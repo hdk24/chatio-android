@@ -38,8 +38,10 @@ public abstract class BaseActivity extends AppCompatActivity {
      * Start socket service on first time
      */
     public void startSocketService() {
-        Intent socketService = new Intent(getApplicationContext(), SocketService.class);
-        startService(socketService);
+        if (SocketService.getInstance()==null) {
+            Intent socketService = new Intent(getApplicationContext(), SocketService.class);
+            startService(socketService);
+        }
     }
 
     /**
@@ -48,14 +50,5 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void startMessageService() {
         startSocketService();
         SocketService.getInstance().initMessageSubscription();
-        bindView().getRoot().post(()->{
-
-        });
-    }
-
-    @Override
-    public void onConfigurationChanged(@NonNull Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-
     }
 }

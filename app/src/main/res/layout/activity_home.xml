@@ -5,60 +5,81 @@
     android:id="@+id/container_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     android:orientation="vertical"
     tools:context=".ui.home.HomeActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:padding="16dp">
 
         <TextView
             android:id="@+id/initial_name"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            tools:text="D"
-            android:gravity="center"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="16sp"
-            android:textColor="@color/colorWhite"
             android:background="@drawable/bg_circle_accent"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="D" />
 
         <TextView
             android:id="@+id/title_app"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:fontFamily="sans-serif-black"
             android:text="@string/app_name"
             android:textColor="@color/colorTextPrimary"
             android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/img_avatar"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/initial_name"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/text_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginStart="16dp"
+            android:ellipsize="end"
             android:fontFamily="sans-serif-medium"
+            android:maxLines="1"
             android:textColor="@color/colorTextSecondary"
             android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@+id/img_avatar"
-            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/initial_name"
             app:layout_constraintTop_toBottomOf="@+id/title_app"
             tools:text="Login as Hanantadk" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_rounded_gray"
+        android:paddingStart="20dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="20dp"
+        android:drawablePadding="12dp"
+        android:textSize="16sp"
+        android:drawableStart="@drawable/ic_search"
+        android:paddingBottom="12dp"
+        android:text="Search"
+        android:textColor="@color/colorTextSecondary" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_message_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/view_message_item"
-        app:layout_constraintTop_toBottomOf="@+id/app_bar" />
+        app:layout_constraintTop_toBottomOf="@+id/app_bar"
+        tools:listitem="@layout/view_message_item" />
 
 </LinearLayout>
