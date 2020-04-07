@@ -1,10 +1,8 @@
 package com.hdk24.chatio.ui.base;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewbinding.ViewBinding;

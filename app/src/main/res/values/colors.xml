@@ -4,13 +4,14 @@
     <color name="colorPrimaryDark">#F0F0F0</color>
     <color name="colorAccent">#6D21DA</color>
     <color name="colorAccent50">#806D21DA</color>
-    <color name="colorTextPrimary">#212121</color>
-    <color name="colorTextSecondary">#969696</color>
-    <color name="colorIcon">#A0A3A8</color>
+    <color name="colorTextPrimary">#171717</color>
+    <color name="colorTextSecondary">#B6C4D1</color>
+    <color name="colorIcon">#B7C6DE</color>
 
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#010101</color>
     <color name="colorRed">#CA2323</color>
     <color name="colorBlue">#2962FF</color>
     <color name="colorGreen">#09A048</color>
+    <color name="colorYellow">#FFAB00</color>
 </resources>

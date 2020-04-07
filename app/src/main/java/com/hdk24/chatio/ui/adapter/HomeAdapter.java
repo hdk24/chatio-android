@@ -23,10 +23,12 @@ public class HomeAdapter extends RecyclerView.Adapter<BaseViewHolder<Message>> {
 
     private final List<Message> dataSet;
     private final Context context;
+    private final OnHomeListener listener;
 
-    public HomeAdapter(Context context, List<Message> data) {
+    public HomeAdapter(Context context, List<Message> data, OnHomeListener listener) {
         this.context = context;
         this.dataSet = data;
+        this.listener = listener;
     }
 
     @NonNull
@@ -40,6 +42,7 @@ public class HomeAdapter extends RecyclerView.Adapter<BaseViewHolder<Message>> {
     public void onBindViewHolder(@NonNull BaseViewHolder<Message> genericHolder, int position) {
         HomeViewHolder holder = (HomeViewHolder) genericHolder;
         holder.bind(dataSet.get(position));
+        holder.itemView.setOnClickListener(v -> listener.onItemClicked(dataSet.get(position)));
     }
 
     @Override
@@ -63,5 +66,9 @@ public class HomeAdapter extends RecyclerView.Adapter<BaseViewHolder<Message>> {
     public void addNewMessage(Message message) {
         dataSet.add(0, message);
         notifyItemInserted(0);
+    }
+
+    public interface OnHomeListener {
+        void onItemClicked(Message message);
     }
 }

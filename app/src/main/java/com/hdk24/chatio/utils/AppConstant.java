@@ -31,8 +31,7 @@ public final class AppConstant {
 
     // type message
     public static final int TYPE_MESSAGE = 0;
-    public static final int TYPE_LOG = 1;
-    public static final int TYPE_ACTION = 2;
+    public static final int TYPE_SAVED = 1;
 
     // network status
     public static final int STATUS_DISCONNECTED = 0;

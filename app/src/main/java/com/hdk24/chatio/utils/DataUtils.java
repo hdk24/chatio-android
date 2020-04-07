@@ -1,12 +1,12 @@
 package com.hdk24.chatio.utils;
 
-import com.hdk24.chatio.R;
 import com.hdk24.chatio.data.model.Message;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.hdk24.chatio.utils.AppConstant.TYPE_MESSAGE;
+import static com.hdk24.chatio.utils.AppConstant.TYPE_SAVED;
 
 /*
  *  Created by Hanantadk on 27/03/20.
@@ -23,7 +23,7 @@ public class DataUtils {
         builder1.isPrivate(false);
         builder1.username("Socket.io");
 
-        Message.Builder builder2 = new Message.Builder(TYPE_MESSAGE);
+        Message.Builder builder2 = new Message.Builder(TYPE_SAVED);
         builder2.time(System.currentTimeMillis());
         builder2.message("chat with your self. Data will save on local");
         builder2.isPrivate(true);

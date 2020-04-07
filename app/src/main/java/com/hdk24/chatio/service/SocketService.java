@@ -227,7 +227,7 @@ public class SocketService extends Service {
                     MessageEvent msg = new MessageEvent();
                     msg.topic = event;
                     msg.message = s;
-                    msg.time = System.currentTimeMillis() / 1000;
+                    msg.time = System.currentTimeMillis();
                     bus.post(msg);
 
                 }, throwable -> {

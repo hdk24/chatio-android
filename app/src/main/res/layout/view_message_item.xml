@@ -19,9 +19,9 @@
         android:id="@+id/container_foreground_swipe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/selector_list_white"
         android:clickable="true"
-        android:focusable="true"
-        android:background="@drawable/selector_list_white">
+        android:focusable="true">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_avatar"
@@ -50,60 +50,52 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toEndOf="@+id/img_avatar"
+            app:layout_constraintEnd_toStartOf="@+id/text_time"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_goneMarginEnd="16dp"
             tools:text="Socket.io" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/text_time"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:maxLines="1"
             android:layout_marginEnd="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/text_username"
-            app:layout_constraintBottom_toBottomOf="@+id/img_avatar"
+            app:layout_constraintBottom_toBottomOf="@+id/text_username"
+            app:layout_constraintTop_toTopOf="@+id/text_username"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/colorTextSecondary"
+            android:textSize="12sp"
+            tools:text="Now" />
+
+        <TextView
+            android:id="@+id/text_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif"
+            android:maxLines="1"
+            android:textColor="@color/colorTextSecondary"
+            tools:text="Hello this is last message ksi l jjs hijp kpks jpanjang skelai bingu"
+            app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toStartOf="@+id/indicator_unread"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/img_avatar">
-
-            <TextView
-                android:id="@+id/text_message"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="8dp"
-                android:ellipsize="end"
-                android:fontFamily="sans-serif"
-                android:maxLines="1"
-                android:textColor="@color/colorTextSecondary"
-                tools:text="Hello this is last message from socket.io" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="•" />
-
-            <TextView
-                android:id="@+id/text_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textColor="@color/colorTextSecondary"
-                android:textSize="12sp"
-                tools:text="Now" />
-        </LinearLayout>
+            app:layout_constraintStart_toEndOf="@+id/img_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/text_username"/>
 
         <View
             android:id="@+id/indicator_unread"
             android:layout_width="12dp"
             android:layout_height="12dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:background="@drawable/bg_circle_accent"
             android:gravity="center"
             android:minWidth="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/text_message"
+            app:layout_constraintBottom_toBottomOf="@id/text_message"
+            app:layout_constraintTop_toBottomOf="@id/text_time"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

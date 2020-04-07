@@ -1,9 +1,7 @@
 package com.hdk24.chatio;
 
 import android.app.Application;
-import android.content.Intent;
 
-import com.hdk24.chatio.service.SocketService;
 import com.hdk24.chatio.utils.AppLogger;
 
 /*
